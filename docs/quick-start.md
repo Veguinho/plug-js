@@ -11,16 +11,18 @@ Let's start!
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Setting up](#setting-up)
-- [Evaluating Expressions](#evaluating-expressions)
-  * [Evaluating Expressions on the Playground](#evaluating-expressions-on-the-playground)
-  * [Evaluating Expressions Programmatically](#evaluating-expressions-programmatically)
-- [Collecting Information](#collecting-information)
-  * [Enriching Profiles](#enriching-profiles)
-  * [Enriching Sessions](#enriching-sessions)
-- [Tracking Events](#tracking-events)
-- [Identifying Users](#identifying-users)
+- [Quick Start Guide](#quick-start-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Setting Up](#setting-up)
+  - [Evaluating Expressions](#evaluating-expressions)
+    - [Evaluating Expressions on the Playground](#evaluating-expressions-on-the-playground)
+    - [Evaluating Expressions Programmatically](#evaluating-expressions-programmatically)
+  - [Collecting Information](#collecting-information)
+    - [Enriching Profiles](#enriching-profiles)
+    - [Enriching Sessions](#enriching-sessions)
+  - [Tracking Events](#tracking-events)
+  - [Identifying Users](#identifying-users)
 
 ## Introduction
 
@@ -38,6 +40,7 @@ can use it directly in the code without any additional step.
 # CQL expressions are self-explanatory
 user's age is greater than 18
 ```
+The expected output in this case would be either `true` or `false`.
 
 For developers, CQL serves as an abstraction layer between the application and the underlying personalization infrastructure:
 
@@ -88,9 +91,12 @@ Follow the steps below to connect the playground with CodePen:
 4. Click on _"Let's play!"_
 5. Finally, click on the button labeled _"codepen.io/pen"_ at the top right of the page
 
+![Alt text](example_images/QS_playground_connect.gif)
+
 After the page loads, you should notice an indication on the playground tab that you have an unseen notification.
 Switching back to the playground tab, you should see a notification saying _"Connection established"_ that indicates 
-the playground is now connected to the CodePen editor. 
+the playground is now connected to the CodePen editor. The circle remains green as long as you are connected to the application:
+ <img src="example_images/QS_playground_success.png" width="100">
 
 > In real cases, you will use an API key to connect to your production application. You can also use a development URL, 
 > such as `https://testing.myapp.com` or `https://localhost/myapp`.
@@ -133,7 +139,7 @@ You can also mix boolean expressions using conjunctions to form more sophisticat
 user's interests include "rental" and location's city is "New York"
 ```
 
-To see the list of expressions and variables available, click on the _"Cheat Sheet"_ link at the top of the page.
+> To see the full list of expressions and variables available, click on the _"Cheat Sheet"_ link at the top of the page.
 
 ### Evaluating Expressions Programmatically
 
@@ -296,7 +302,7 @@ have expanded. We could use a similar approach to personalize elements of the ap
 
 Events are the fuel of personalization engines. It serves two primary purposes: recording facts for path analysis and 
 feeding the evaluation data layer. As already mentioned, the SDK automatically collects general-purpose events for you, 
-such as viewed pages and idle periods, to name a few. For non-generic events, it is up to decide which events can 
+such as viewed pages and idle periods, to name a few. For non-generic events, it is up to you to decide which events can 
 benefit your application.
  
 The following example demonstrates how the personalization engine uses events to enrich the evaluation context.
@@ -389,7 +395,6 @@ to assemble cross-channel data into a unified customer view.
 The following example covers the steps to identify, retrieve identifiers, and anonymize users:
 
 ```html
-
 <button onclick="identify()">
 Identify
 </button>
@@ -422,3 +427,5 @@ migrating the information from the anonymous profile to the identified profile.
 
 > Never use guessable attributes as an identifier, such as email, phone, or incremental IDs. Instead, 
 > we strongly recommend using a cryptographically-secure UUID v4 generator.
+
+If you want to learn more about Croct SDK, check out the other sections in the [documentation](https://github.com/Veguinho/plug-js/tree/improve-docs#documentation). And if you have any problems while experimenting with the SDK, you can look for answers at the [troubleshooting](https://github.com/Veguinho/plug-js/blob/improve-docs/docs/troubleshooting.md) section.
